@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { Todo } from '../src/types/todo.types.js'
+import { Todo } from '../types/todo.types' 
 
 const todoSchema = new mongoose.Schema <Todo> ({
     title : { type : String, required : true },

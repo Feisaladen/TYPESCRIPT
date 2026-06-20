@@ -1,6 +1,6 @@
 import type { FastifyRequest, FastifyReply } from 'fastify'
-import { TodoModel } from '../../models/todo.model.js'
-import type { createTobody, updateTodoBody } from '../types/todo.types.js'
+import { TodoModel } from '../models/todo.model' 
+import type { createTobody, updateTodoBody } from '../types/todo.types'
 
 const sanitize = (str: string) => str.replace(/[<>'"]/g, '')
 
@@ -18,7 +18,7 @@ export const createTodo = async (
     reply: FastifyReply
 ) => {
     try {
-        const { title, description } = request.body
+        const { title , description } = request.body
         const todo = await TodoModel.create({ title: sanitize(title), description: sanitize(description), iscompleted: false })
         reply.status(201).send(todo)
     } catch (error) {

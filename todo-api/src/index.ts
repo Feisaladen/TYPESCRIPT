@@ -1,17 +1,20 @@
-import fastify from 'fastify' 
- 
-const app = fastify()
+import Fastify from 'fastify'
+import mongoose from  'mongoose' 
+ import { todoRoutes} from './routes/todo.routes'
+const app = Fastify() // initiate 
 
-app.get('/', async (request, reply) => {
-    return { message : 'todo API is running!'}
-})
+app.register(todoRoutes)
+
 const start = async () => {
     try {
-        await app.listen({port : 3000})
-        console.log('server is running')
+        await mongoose.connect('mongodb://localhost:27017/todo-api')
+        console.log('Connected to Mongodb')
+
+        await app.listen({ port: 3000}) 
+        console.log('server running  on port 3000')
     } catch (err) {
         console.log(err)
         process.exit(1)
     }
-} 
-start ()
+}
+start() 

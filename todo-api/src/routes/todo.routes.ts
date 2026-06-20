@@ -5,7 +5,7 @@ import {
     getTodoById,
     deleteTodo,
     updateTodo
-} from '../src/controllers/todo..controller.js'
+} from '../controllers/todo.controller'
 
 export const todoRoutes = async (app: FastifyInstance) => {
     app.get('/todos', getAllTodos)
